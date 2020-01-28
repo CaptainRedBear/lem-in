@@ -16,10 +16,13 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
+# define POOR_FORM {ft_putendl("Error : Map input poorly formatted."); exit(1);}
 # define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
 # define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
+# define VALID_START {ft_putendl("Start : Valid."); exit(1);}
+# define VALID_END {ft_putendl("End : Valid."); exit(1);}
 
-void			val_map();
+void			val_map(void);
 
 typedef struct		s_path
 {
@@ -37,7 +40,7 @@ typedef struct		s_links
 typedef struct		s_room
 {
 	char			*name;
-	t_co_ord		pos;
+	//t_co_ord		pos;
 	t_links			*links;
 	int				type;
 	int				ant_count;

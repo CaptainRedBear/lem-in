@@ -14,4 +14,5 @@
 
 int		main(void)
 {
+        val_map();
 }
