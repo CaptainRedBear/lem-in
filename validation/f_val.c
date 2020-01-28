@@ -52,8 +52,7 @@ void			val_map(void)
 			get_next_line(0, &line);
 			if (ft_strncmp(line, "##", 2) != 0)
 				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			if (ft_strcmp(line, "##start") == 0)
-				start++;
+			ft_strcmp(line, "##start") == 0 ? start++ : exit;
 		}
 		else if (ft_strcmp(line, "##end") == 0)
 		{
@@ -61,8 +60,7 @@ void			val_map(void)
 			get_next_line(0, &line);
 			if (ft_strncmp(line, "##", 2) != 0)
 				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			if (ft_strcmp(line, "##end") == 0)
-				end++;
+			ft_strcmp(line, "##end") == 0 ? end++ : exit;
 		}
 	}
 	end > 1 ? (MULTI_END) : exit;
