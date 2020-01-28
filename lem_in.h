@@ -14,7 +14,12 @@
 # define LEM_IN_H
 
 # include <stdio.h>
-# include "libft.h"
+# include "./libft/libft.h"
+
+# define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
+# define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
+
+void			val_map();
 
 typedef struct		s_path
 {

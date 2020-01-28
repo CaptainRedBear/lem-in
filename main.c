@@ -6,11 +6,11 @@
 /*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 07:42:42 by hbarnard          #+#    #+#             */
-/*   Updated: 2020/01/28 07:42:46 by hbarnard         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:33:46 by ldu-pree         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 
 int		main(void)
 {
