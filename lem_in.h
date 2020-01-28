@@ -19,10 +19,9 @@
 # define POOR_FORM {ft_putendl("Error : Map input poorly formatted."); exit(1);}
 # define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
 # define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
-# define VALID_START {ft_putendl("Start : Valid."); exit(1);}
-# define VALID_END {ft_putendl("End : Valid."); exit(1);}
 
 void			val_map(void);
+void			val_room(void);
 
 typedef struct		s_path
 {
