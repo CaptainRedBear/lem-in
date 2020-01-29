@@ -93,5 +93,11 @@ t_room				*find_start(t_room **rooms);
 void				free_rooms(t_room **room);
 void				free_links(t_links **link);
 
+// Made by Tim
+
+void				disp_ants(t_ant *ant, t_room **rooms);
+void				traversal(t_path *path, t_room **rooms);
+void				disp_map(char **map);
+t_room				*find_room(t_room *room, char *name);
 
 #endif
