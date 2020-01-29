@@ -44,15 +44,15 @@ void            traversal(t_path *path, t_room **rooms)
     {
         if (!(ants[i - 1] = (t_ant *)malloc(sizeof(t_ant))))
             MALLOC_ERR;
-        ant[i - 1]->ant_num = i;
-        ant[i - 1]->curr_room = path->room_name;
-        ant[i - 1]->path = path;
+        ants[i - 1]->ant_num = i;
+        ants[i - 1]->curr_room = path->room_name;
+        ants[i - 1]->path = path;
         i++;
     }
     march(ants, rooms);
     i = 0;
     while (i < num)
-        free(ants[i++;]);
+        free(ants[i++]);
     free(ants);
 }
 
@@ -60,9 +60,9 @@ t_room          *find_room(t_room *room, char *name)
 {
     while (room)
     {
-        if (ft_strequ(room->room_name, name))
+        if (ft_strequ(room->name, name))
             return (room);
-        room = room->next_room;
+        room = room->next;
     }
     return (room);
 }

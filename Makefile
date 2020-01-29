@@ -5,6 +5,7 @@ LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
 TRAVEL_DIR		= $(SRC_DIR)travel/
+PATH_DIR		= $(SRC_DIR)paths/
 VAL_DIR			= ./validation/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
@@ -20,7 +21,8 @@ WHITE			:="\033[1;37m"
 EOC				:="\033[0;0m"
 # ==================
 
-SRCS		= main.c $(VAL_DIR)f_val.c $(ROOMS_DIR)room_manip.c $(ROOMS_DIR)link_manip.c $(TRAVEL_DIR)travel.c
+SRCS		= main.c $(VAL_DIR)f_val.c $(ROOMS_DIR)room_manip.c $(ROOMS_DIR)link_manip.c $(TRAVEL_DIR)traversal.c 
+SRCS		+= $(PATH_DIR)path_manip.c $(PATH_DIR)queue_manip.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

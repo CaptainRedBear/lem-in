@@ -82,6 +82,12 @@ typedef struct		s_ant
 	t_path			*path;
 }					t_ant;
 
+typedef struct		s_queue
+{
+	t_room			*room;
+	struct s_queue	*next;
+}					t_queue;
+
 /*
 **validation
 */
@@ -101,6 +107,13 @@ void				free_links(t_links **link);
 void				room_swap(t_room **rooms);
 t_links				*new_link(t_room *room, char *name);
 void				add_link(t_room **room, char *name1, char *name2);
+t_queue				*queue_new(t_room *room);
+void				queue_add(t_queue *queue, t_room *room);
+void				queue_remove(t_queue **queue);
+void				free_paths(t_path **path);
+t_path				*new_path(char *room_name);
+t_path				*add_path(t_path **path, char *room_name);
+size_t				path_length(t_path *path);
 
 // Made by Tim
 
