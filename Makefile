@@ -3,6 +3,8 @@ CC				= gcc
 FLAGS			= -Wall -Werror -Wextra
 LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
+ROOMS_DIR		= $(SRC_DIR)rooms/
+TRAVEL_DIR		= $(SRC_DIR)travel/
 VAL_DIR			= ./validation/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
@@ -18,7 +20,7 @@ WHITE			:="\033[1;37m"
 EOC				:="\033[0;0m"
 # ==================
 
-SRCS		= main.c $(VAL_DIR)f_val.c
+SRCS		= main.c $(VAL_DIR)f_val.c $(ROOMS_DIR)room_manip.c $(ROOMS_DIR)link_manip.c $(TRAVEL_DIR)travel.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)
