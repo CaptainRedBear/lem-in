@@ -44,7 +44,6 @@ void			val_map(void)
 	DECLARE;
 	while (get_next_line(0, &line))
 	{
-		ft_putstr("WHY GOD WHY\n");
 		if (ft_strcmp(line, "##start") == 0)
 		{
 			START;
