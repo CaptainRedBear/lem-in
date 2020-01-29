@@ -16,12 +16,21 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
+/*
+**macros
+*/
+
 # define POOR_FORM {ft_putendl("Error : Map input poorly formatted."); exit(1);}
 # define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
 # define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
+# define MALLOC_ERR {ft_putendl("Error : Malloc Error."); exit(1);}
+# define DUP_NAME {ft_putendl("Error : Duplicate room names present"); exit(1);}
+# define POS_CLASH {ft_putendl("Error : Overlapping room positions"); exit(1);}
+//# define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
 
-void			val_map(void);
-void			val_room(void);
+/*
+**structs
+*/
 
 typedef struct		s_path
 {
@@ -36,10 +45,16 @@ typedef struct		s_links
 	struct s_links	*next;
 }					t_links;
 
+typedef struct		s_co_ord
+{
+	int				x;
+	int				y;
+}					t_co_ord;
+
 typedef struct		s_room
 {
 	char			*name;
-	//t_co_ord		pos;
+	t_co_ord		pos;
 	t_links			*links;
 	int				type;
 	int				ant_count;
@@ -60,5 +75,23 @@ typedef struct		s_ant
 	char			*curr_room;
 	t_path			*path;
 }					t_ant;
+
+/*
+**validation
+*/
+
+void				val_map(void);
+void				val_room(void);
+
+/*
+**struct control
+*/
+
+t_room				*add_room(t_room **room, char **data, int type);
+t_room				*new_room(char **data, int type);
+t_room				*find_start(t_room **rooms);
+void				free_rooms(t_room **room);
+void				free_links(t_links **link);
+
 
 #endif

@@ -21,7 +21,7 @@ static int		check_lines(char *str, char sp)
 	count = 0;
 	while (*(str + i) != '\0')
 	{
-		*(str + i) == sp ? count++ : exit;
+		*(str + i) == sp ? (count++) : exit(1);
 		i++;
 	}
 	return (count);
@@ -51,7 +51,7 @@ void			val_map(void)
 			get_next_line(0, &line);
 			if (ft_strncmp(line, "##", 2) != 0)
 				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##start") == 0 ? start++ : exit;
+			ft_strcmp(line, "##start") == 0 ? (start++) : exit(1);
 		}
 		else if (ft_strcmp(line, "##end") == 0)
 		{
@@ -59,9 +59,9 @@ void			val_map(void)
 			get_next_line(0, &line);
 			if (ft_strncmp(line, "##", 2) != 0)
 				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##end") == 0 ? end++ : exit;
+			ft_strcmp(line, "##end") == 0 ? (end++) : exit(1);
 		}
 	}
-	end > 1 ? (MULTI_END) : exit;
-	start > 1 ? (MULTI_START) : exit;
+	end > 1 ? (MULTI_END) : exit(1);
+	start > 1 ? (MULTI_START) : exit(1);
 }

@@ -83,7 +83,7 @@ SRC =	ft_putchar.c \
 		poschr.c \
 		get_next_line.c \
 		ft_stralen.c \
-		exit_m
+		exit_m.c
 
 OBJ	= $(SRC:%.c=%.o)
 

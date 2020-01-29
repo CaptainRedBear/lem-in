@@ -17,10 +17,10 @@ t_room	*new_room(char **data, int type)
 	t_room *new;
 
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
-		mall_error();
+		MALLOC_ERR;
 	new->name = ft_strdup(data[0]);
-	new->pos.x = ft_strdup(data[1]);
-	new->pos.y = ft_strdup(data[2]);
+	new->pos.x = ft_atoi(data[1]);
+	new->pos.y = ft_atoi(data[2]);
 	new->type = type;
 	new->ant_count = 0;
 	new->x_path = 0;
@@ -40,19 +40,31 @@ t_room	*add_room(t_room **room, char **data, int type)
 		*room = new_room(data, type);
 		return (*room);
 	}
-	while (tmp->next)
+	while (tmp)
 	{
-		ft_strequ(info[0], tmp->name) ? (dup_name()) : NULL;
+		ft_strequ(data[0], tmp->name) ? (DUP_NAME) : NULL;
 		if (tmp->pos.x == ft_atoi(data[1]))
-			tmp->pos.y == ft_atoi(data[2]) ? (pos_clash()) : NULL;
+			tmp->pos.y == ft_atoi(data[2]) ? (POS_CLASH) : NULL;
 		tmp = tmp->next;
 	}
-	ft_strequ(info[0], tmp->name) ? (dup_name()) : NULL;
-	if (tmp->pos.x == ft_atoi(data[1]))
-		tmp->pos.y == ft_atoi(data[2]) ? (pos_clash()) : NULL;
 	tmp->next = new_room(data, type);
 	(*room)->rcount++;
 	return (*room);
+}
+
+void	free_rooms(t_room **room)
+{
+	t_room *next;
+
+	while (*room)
+	{
+		free_links(&((*room)->links));
+		free((*room)->name);
+		free(*room);
+		next = (*room)->next;
+		(*room) = next;
+	}
+	*room = NULL;
 }
 
 t_room	*find_start(t_room **rooms)

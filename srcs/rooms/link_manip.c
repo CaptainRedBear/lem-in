@@ -11,3 +11,18 @@
 /* ************************************************************************** */
 
 #include "../../lem_in.h"
+
+void	free_links(t_links **link)
+{
+	t_links *next;
+
+	next = *link;
+	while (*link)
+	{
+		next = (*link)->next;
+		free((*link)->link);
+		free(*link);
+		(*link) = next;
+	}
+	*link = NULL;
+}
