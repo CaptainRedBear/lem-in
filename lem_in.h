@@ -66,7 +66,9 @@ typedef struct		s_room
 
 typedef	struct		s_se{
 	char			start;
+	int				scount;
 	char			end;
+	int				ecount;
 }					t_se;
 
 typedef struct		s_ant
@@ -93,5 +95,10 @@ t_room				*find_start(t_room **rooms);
 void				free_rooms(t_room **room);
 void				free_links(t_links **link);
 
+/*
+**misc
+*/
+
+t_room				*find_room(t_room *room, char *name);
 
 #endif
