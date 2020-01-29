@@ -21,7 +21,7 @@ static int		check_lines(char *str, char sp)
 	count = 0;
 	while (*(str + i) != '\0')
 	{
-		*(str + i) == sp ? (count++) : 0;
+		*(str + i) == sp ? (count++) : NULL;
 		i++;
 	}
 	return (count);
