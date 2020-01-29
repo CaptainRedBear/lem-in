@@ -12,8 +12,6 @@
 
 #include "../../lem_in.h"
 
-
-
 void	free_links(t_links **link)
 {
 	t_links *next;

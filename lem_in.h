@@ -26,7 +26,7 @@
 # define MALLOC_ERR {ft_putendl("Error : Malloc Error."); exit(1);}
 # define DUP_NAME {ft_putendl("Error : Duplicate room names present"); exit(1);}
 # define POS_CLASH {ft_putendl("Error : Overlapping room positions"); exit(1);}
-//# define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
+# define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
 
 /*
 **structs
@@ -94,6 +94,7 @@ t_room				*new_room(char **data, int type);
 t_room				*find_start(t_room **rooms);
 void				free_rooms(t_room **room);
 void				free_links(t_links **link);
+void				room_swap(t_room **rooms);
 
 /*
 **misc

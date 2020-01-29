@@ -76,3 +76,32 @@ t_room	*find_start(t_room **rooms)
 		tmp = tmp->next;
 	return (tmp);
 }
+
+void	room_swap(t_room **rooms)
+{
+	t_room	*n[4];
+
+	n[0] = *rooms;
+	n[1] = *rooms;
+	n[2] = *rooms;
+	while (n[0] && n[0]->type != 1)
+		n[0] = n[0]->next;
+	while (n[2] && n[2]->type != 2)
+		n[2] = n[2]->next;
+	if (!ft_strequ(n[1]->name, n[0]->name))
+	{
+		while (!ft_strequ(n[1]->next->name, n[0]->name))
+			n[1] = n[1]->next;
+		n[1]->next = n[0]->next;
+		n[0]->next = *rooms;
+		*rooms = n[0];
+	}
+	n[1] = *rooms;
+	n[3] = *rooms;
+	while (n[1] && n[1]->next)
+		n[1] = n[1]->next;
+	while (n[3] && n[3]->next->type != 2)
+		n[3] = n[3]->next;
+	if (!ft_strequ(n[1]->name, n[2]->name))
+		E2E;
+}
