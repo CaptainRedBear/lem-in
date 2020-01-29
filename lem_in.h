@@ -28,6 +28,9 @@
 # define DUP_LINK {ft_putendl("Error : Duplicate links present"); exit(1);}
 # define POS_CLASH {ft_putendl("Error : Overlapping room positions"); exit(1);}
 # define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
+# define START {start++; get_next_line(0, &line);}
+# define END {end++; get_next_line(0, &line);}
+# define DECLARE {start = 0; end = 0;}
 
 /*
 **structs
@@ -99,10 +102,11 @@ void				room_swap(t_room **rooms);
 t_links				*new_link(t_room *room, char *name);
 void				add_link(t_room **room, char *name1, char *name2);
 
-/*
-**misc
-*/
+// Made by Tim
 
+void				disp_ants(t_ant *ant, t_room **rooms);
+void				traversal(t_path *path, t_room **rooms);
+void				disp_map(char **map);
 t_room				*find_room(t_room *room, char *name);
 
 #endif
