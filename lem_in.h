@@ -28,6 +28,9 @@
 # define DUP_LINK {ft_putendl("Error : Duplicate links present"); exit(1);}
 # define POS_CLASH {ft_putendl("Error : Overlapping room positions"); exit(1);}
 # define E2E {n[3]->next = n[2]->next; n[1]->next = n[2]; n[2]->next = NULL;}
+# define START {start++; get_next_line(0, &line);}
+# define END {end++; get_next_line(0, &line);}
+# define DECLARE {start = 0; end = 0;}
 
 /*
 **structs
