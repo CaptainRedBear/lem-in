@@ -6,10 +6,10 @@ SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
 TRAVEL_DIR		= $(SRC_DIR)travel/
 PATH_DIR		= $(SRC_DIR)paths/
-VAL_DIR			= ./validation/
+VAL_DIR			= $(SRC_DIR)validation/
 LIBRARIES 		= -lft -Llibft
 LIBFT			= ./libft/*
-INCLUDES 		= -I./libft/includes -I./includes
+# INCLUDES 		= -I./libft/includes -I./includes
 
 # ----- Colors -----
 BLACK			:="\033[1;30m"

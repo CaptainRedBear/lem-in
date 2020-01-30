@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lem_in.h"
+#include "../../lem_in.h"
 
 static int		check_lines(char *str, char sp)
 {
@@ -37,6 +37,7 @@ void			val_room(void)
 
 void			val_map(void)
 {
+	disp_ants(NULL, NULL);
 	char	*line;
 	int		start;
 	int		end;

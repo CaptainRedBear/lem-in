@@ -1,16 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/03 11:01:21 by hbarnard          #+#    #+#              #
-#    Updated: 2019/09/12 13:32:07 by hbarnard         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME =	libft.a
+NAME = libft
 
 CFLAGS	= -Wall -Werror -Wextra -I. -c
 
@@ -85,21 +73,35 @@ SRC =	ft_putchar.c \
 		ft_stralen.c \
 		exit_m.c
 
-OBJ	= $(SRC:%.c=%.o)
+# ----- Colors -----
+BLACK			:="\033[1;30m"
+RED				:="\033[1;31m"
+GREEN			:="\033[1;32m"
+CYAN			:="\033[1;35m"
+PURPLE			:="\033[1;36m"
+WHITE			:="\033[1;37m"
+EOC				:="\033[0;0m"
+# ==================
+
+OBJ	= $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME): $(OBJ)	
-	ar rcs $(NAME) $(OBJ)
+$(NAME) :
+	@gcc $(CFLAGS) $(SRC)
+	@echo $(GREEN)Compiled source files.$(EOC)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo $(GREEN)Built library.$(EOC)
 
 clean: 
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 norm:
-		norminette $(SRC)
+	norminette $(SRC)
 
