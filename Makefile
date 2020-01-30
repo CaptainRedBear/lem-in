@@ -36,9 +36,11 @@ $(NAME): $(SRCS) $(LIBFT)
 clean:
 		@/bin/rm -f $(OBJS)
 		@cd ./libft && make clean
+		@echo $(RED)"Removed all .o files from lem_in" $(EOC)
 
 fclean: clean
 		@/bin/rm -f $(NAME)
 		@cd ./libft && make fclean
+		@echo $(RED)"Removed all .o files and .a files from lem_in" $(EOC)
 
 re: fclean all

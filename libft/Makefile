@@ -96,9 +96,11 @@ $(NAME) :
 
 clean: 
 	@rm -f $(OBJ)
+	@echo $(RED)"Removed all .o files from libft" $(EOC)
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo $(RED)"Removed all .o files and .a files from libft" $(EOC)
 
 re: fclean all
 
