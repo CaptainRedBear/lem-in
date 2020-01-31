@@ -31,7 +31,9 @@
 # define START {start++; get_next_line(0, &line);}
 # define END {end++; get_next_line(0, &line);}
 # define DECLARE {start = 0; end = 0;}
-# define MULTI_CHECK {end > 1 ? (MULTI_END) : NULL; start > 1 ? (MULTI_START) : NULL;}
+# define O1 {end > 1 ? (MULTI_END) : NULL;}
+# define O2 {start > 1 ? (MULTI_START) : NULL;}
+# define MULTI_CHECK {O1; O2;}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
 
