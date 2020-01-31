@@ -31,7 +31,9 @@
 # define START {start++; get_next_line(0, &line);}
 # define END {end++; get_next_line(0, &line);}
 # define DECLARE {start = 0; end = 0;}
-# define MULTI_CHECK {end > 1 ? (MULTI_END) : NULL; start > 1 ? (MULTI_START) : NULL;}
+# define O1 {end > 1 ? (MULTI_END) : NULL;}
+# define O2 {start > 1 ? (MULTI_START) : NULL;}
+# define MULTI_CHECK {O1; O2;}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
 
@@ -118,7 +120,9 @@ t_path				*new_path(char *room_name);
 t_path				*add_path(t_path **path, char *room_name);
 size_t				path_length(t_path *path);
 
-// Made by Tim
+/*
+**Made by Tim
+*/
 
 void				display_ants(t_ant *ant, t_room **rooms);
 void				traversal(t_path *path, t_room **rooms);
