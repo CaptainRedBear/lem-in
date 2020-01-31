@@ -33,7 +33,10 @@
 # define DECLARE {start = 0; end = 0;}
 # define O1 {end > 1 ? (MULTI_END) : NULL;}
 # define O2 {start > 1 ? (MULTI_START) : NULL;}
+# define O3 {end == 1 ? add_room()  : NULL;}
+# define O4 {start == 1 ? add_room() : NULL;}
 # define MULTI_CHECK {O1; O2;}
+# define ADDSE {02; 03;}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
 
