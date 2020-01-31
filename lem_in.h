@@ -101,6 +101,7 @@ typedef struct		s_queue
 */
 
 void				val_map(void);
+void				val_se(void);
 void				val_room(void);
 
 /*
@@ -131,5 +132,6 @@ void				display_ants(t_ant *ant, t_room **rooms);
 void				traversal(t_path *path, t_room **rooms);
 void				disp_map(char **map);
 t_room				*find_room(t_room *room, char *name);
+void				breadth(t_room *start);
 
 #endif

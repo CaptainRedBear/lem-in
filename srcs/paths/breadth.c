@@ -69,7 +69,7 @@ t_path		*construct_path(t_room *start)
 
 void		breadth(t_room *start)
 {
-	t_queue	*queuel
+	t_queue	*queuel;
 	t_links	*tmp_link;
 	t_room	*room;
 	t_room	*end;

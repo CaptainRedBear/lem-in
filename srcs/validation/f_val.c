@@ -67,29 +67,5 @@ void			val_se(void)
 
 void			val_map(void)
 {
-	char	*line;
-	int		start;
-	int		end;
-
-	DECLARE;
-	while (get_next_line(0, &line))
-	{
-		if (ft_strcmp(line, "##start") == 0)
-		{
-			START;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##start") == 0 ? (start++) : 0;
-		}
-		else if (ft_strcmp(line, "##end") == 0)
-		{
-			END;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##end") == 0 ? (end++) : 0;
-		}
-	}
-	MULTI_CHECK;
-	end == 0 ? (NO_END) : NULL;
-	start == 0 ? (NO_START) : NULL;
+	val_se();
 }
