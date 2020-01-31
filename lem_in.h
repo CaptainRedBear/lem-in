@@ -40,6 +40,9 @@
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
 
+# define Q_1 {queue_add(queue, tmp_link->room);
+# define Q_2 tmp_link->room->dist = queue->room->dist + 1;}
+# define QUEUE_ADD Q_1 Q_2
 /*
 **structs
 */
