@@ -12,12 +12,21 @@
 
 #include "../../lem_in.h"
 
-static	int		checkx(int i, int j, int l, int k, char *line, int fcoord, char *coord, char *name)
+static	int		checkx(int i, int *x, int k, char *line)
 {
+	char	*coord;
+	int		l;
+
+	coord = NULL;
+	l = 0;
 	while (line[i] != ' ')
+	{
 		i++;
-	coord = ft_memalloc(i-j);
-	i = k+1;
+		l++;
+	}
+	coord = ft_memalloc(l);
+	l = 0;
+	i = k + 1;
 	while (line[i] != ' ')
 	{
 		ft_isdigit(line[i]) ? NULL : (BAD_X);
@@ -26,93 +35,79 @@ static	int		checkx(int i, int j, int l, int k, char *line, int fcoord, char *coo
 		l++;
 	}
 	coord[l] = '\0';
-	fcoord = atoi(coord);
-	printf("line=[%s] name=[%s] x=[%d]\n", line, name, fcoord);
+	*x = atoi(coord);
 	k = i;
-	return(i);
+	return (k);
 }
 
-void			ch_room(char *line)
+static	int		checky(int i, int *y, int k, char *line)
+{
+	char	*coord;
+	int		l;
+
+	coord = NULL;
+	l = 0;
+	while (line[i])
+	{
+		i++;
+		l++;
+	}
+	coord = NULL;
+	coord = ft_memalloc(l);
+	l = 0;
+	i = k + 1;
+	while (line[i])
+	{
+		ft_isdigit(line[i]) ? NULL : (BAD_Y);
+		coord[l] = line[i];
+		i++;
+		l++;
+	}
+	coord[l] = '\0';
+	*y = atoi(coord);
+	k = i;
+	return (k);
+}
+
+void			ch_room(char *line, t_room **room)
 {
 	char	*name;
 	int		i;
 	int		j;
 	int		k;
-	int 	l;
+	int		l;
 	int		count;
 	char	*coord;
-	int		fcoord;
+	int		x;
+	int		y;
+	char 	*data[4];
 
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
-	count = 0;
+	O7;
 	while (line[i])
 	{
 		if (line[i] == ' ' && count == 0)
-		{
-			k = i;
-			j = i;
-			i = 0;
-			name = ft_memalloc(j);
-			name = ft_strndup(line, j);
-			name[j+1] = '\0';
-			printf("%s[j=[%d]]\n", name, j);
-			i = j+1;
-			count++;
-		}
+			CH_ROOM_NAME;
 		if (line[i] == ' ' && count == 1)
+			CH_ROOM_X;
+		if (line[i + 1] == '\0' && count == 2)
 		{
-			j = i;
-			i = k+1;
-			checkx(i, j, l, k, line, fcoord, coord, name);
-			// while (line[i] != ' ')
-			// 	i++;
-			// coord = ft_memalloc(i-j);
-			// i = k+1;
-			// while (line[i] != ' ')
-			// {
-			// 	ft_isdigit(line[i]) ? NULL : (BAD_X);
-			// 	coord[l] = line[i];
-			// 	i++;
-			// 	l++;
-			// }
-			// coord[l] = '\0';
-			// fcoord = atoi(coord);
-			// printf("line=[%s] name=[%s] x=[%d] count{%d}\n", line, name, fcoord, count);
-			// k = i;
-			count++;
-			i = j+1;
-		}
-		if (line[i+1] == '\0' && count == 2)
-		{
-			l = 0;
-			j = ft_strlen(line);
-			i = k+1;
-			while (line[i])
-				i++;
-			coord = NULL;
-			coord = ft_memalloc(i-j);
-			i = k+1;
-			while (line[i])
-			{
-				ft_isdigit(line[i]) ? NULL : (BAD_X);
-				coord[l] = line[i];
-				i++;
-				l++;
-			}
-			coord[l] = '\0';
-			fcoord = atoi(coord);
-			printf("line=[%s] name=[%s] y=[%d] count{%d}\n", line, name, fcoord, count);
-			k = i;
-			count++;
+			CH_ROOM_Y;
 		}
 		i++;
 	}
+	data[0] = ft_memalloc(strlen(name)+1);
+	data[1] = ft_memalloc(100);
+	data[2] = ft_memalloc(100);
+	data[0] = name;
+	data[1] = ft_itoa(x);
+	data[2] = ft_itoa(y);
+	if (room)
+		i = 0;
+	// add_room(room, data, 1);
+	printf("name[%s] x[%d] y[%d]\n", name, x, y);
 }
 
-void			val_rooms(void)
+void			val_rooms(t_room **room)
 {
 	char	*lines;
 	int		count;
@@ -122,18 +117,23 @@ void			val_rooms(void)
 	count = 0;
 	while (get_next_line(0, &lines))
 	{
-		if (count > 1)
+		if (count >= 0)
 		{
 			if (ft_strncmp(lines, "##", 2) == 0)
+			{
 				se = count;
+				val_se(lines);
+			}
 			if (check_lines(lines, ' ') != 2 && check_lines(lines, '-') != 1 &&
 			ft_strncmp(lines, "#", 1) != 0)
 				POOR_FORM;
-			if (ft_strncmp(lines, "#", 1) != 0)
+			if (ft_strncmp(lines, "#", 1) != 0 && check_lines(lines, ' ') == 2)
 			{
-				ch_room(lines);
+				ch_room(lines, room);
 			}
 		}
 		count++;
 	}
+	MULTI_CHECK;
+	NO_CHECK;
 }

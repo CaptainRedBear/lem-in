@@ -12,48 +12,37 @@
 
 #include "../../lem_in.h"
 
-int		check_lines(char *str, char sp)
+int endcount;
+int startcount;
+
+int				check_lines(char *str, char sp)
 {
 	int	count;
 	int	i;
 
 	i = 0;
 	count = 0;
-	while (*(str + i) != '\0')
+	if (sp)
+		i = 0;
+	while (str[i] != '\0')
 	{
-		*(str + i) == sp ? (count++) : 0;
+		if (str[i] == sp)
+			count++;
 		i++;
 	}
 	return (count);
 }
 
-void			val_se(void)
+void			val_se(char *line)
 {
-	char	*line;
-	int		start;
-	int		end;
-
-	DECLARE;
-	while (get_next_line(0, &line))
+	if (ft_strcmp(line, "##start") == 0)
 	{
-		if (ft_strcmp(line, "##start") == 0)
-		{
-			START;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') != 2 ? (POOR_FORM) : NULL;
-			ft_strcmp(line, "##start") == 0 ? (start++) : 0;
-		}
-		else if (ft_strcmp(line, "##end") == 0)
-		{
-			END;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') != 2 ? (POOR_FORM) : NULL;
-			ft_strcmp(line, "##end") == 0 ? (end++) : 0;
-		}
+		startcount++;
 	}
-	MULTI_CHECK;
-	NO_CHECK;
-	ADDSE;
+	else if (ft_strcmp(line, "##end") == 0)
+	{
+		endcount++;
+	}
 }
 
 void			val_ants(void)
@@ -73,9 +62,8 @@ void			val_ants(void)
 	ants > 0 ? NULL : (BAD_ANTS);
 }
 
-void			val_map(void)
+void			val_map(t_room **room)
 {
-	val_rooms();
-	// val_ants();
-	// val_se();
+	val_ants();
+	val_rooms(room);
 }
