@@ -24,7 +24,7 @@ int			check_paths(t_room *room)
 void		reverse(t_path **path)
 {
 	t_path	*prev;
-	t-path	*current;
+	t_path	*current;
 	t_path	*next;
 
 	current = *path;
@@ -46,7 +46,7 @@ t_path		*construct_path(t_room *start)
 	t_path	*path;
 
 	end = start;
-	while (end->type != END)
+	while (end->type != 2)
 		end = end->next;
 	path = NULL;
 	add_path(&path, end->name);
@@ -69,7 +69,7 @@ t_path		*construct_path(t_room *start)
 
 void		breadth(t_room *start)
 {
-	t_queue	*queuel
+	t_queue	*queue;
 	t_links	*tmp_link;
 	t_room	*room;
 	t_room	*end;

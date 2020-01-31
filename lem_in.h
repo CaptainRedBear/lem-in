@@ -43,6 +43,7 @@
 # define Q_1 {queue_add(queue, tmp_link->room);
 # define Q_2 tmp_link->room->dist = queue->room->dist + 1;}
 # define QUEUE_ADD Q_1 Q_2
+
 /*
 **structs
 */
