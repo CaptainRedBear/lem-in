@@ -35,14 +35,8 @@ void			traversal(t_path *path, t_room **rooms)
 {
 	t_ant		**ants;
 	int			i;
-<<<<<<< HEAD
 	const int	num = (*rooms)->ant_count;
 
-=======
-	const int	num;
-
-	num = (*rooms)->ant_count;
->>>>>>> 1aad7c36e4a279c6d0e7755b277955aeb237c40f
 	i = 1;
 	if (!(ants = (t_ant**)malloc(sizeof(t_ant*) * num)))
 		MALLOC_ERR;
