@@ -1,4 +1,4 @@
-NAME = libft
+NAME = libft.a
 
 CFLAGS	= -Wall -Werror -Wextra -I. -c
 
