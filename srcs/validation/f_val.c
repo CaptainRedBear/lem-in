@@ -59,6 +59,7 @@ void			val_map(void)
 			ft_strcmp(line, "##end") == 0 ? (end++) : 0;
 		}
 	}
-	end > 1 ? (MULTI_END) : NULL;
-	start > 1 ? (MULTI_START) : NULL;
+	MULTI_CHECK;
+	end == 0 ? (NO_END) : NULL;
+	start == 0 ? (NO_START) : NULL;
 }
