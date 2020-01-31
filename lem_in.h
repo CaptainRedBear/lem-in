@@ -21,6 +21,7 @@
 */
 
 # define POOR_FORM {ft_putendl("Error : Map input poorly formatted."); exit(1);}
+# define NO_MAP {ft_putendl("Error : No map input, use format: ./lemin < map"); exit(1);}
 # define MULTI_START {ft_putendl("Error : One start room allowed."); exit(1);}
 # define MULTI_END {ft_putendl("Error : One end room allowed."); exit(1);}
 # define MALLOC_ERR {ft_putendl("Error : Malloc Error."); exit(1);}
@@ -35,10 +36,17 @@
 # define O2 {start > 1 ? (MULTI_START) : NULL;}
 # define O3 {end == 1 ? add_room()  : NULL;}
 # define O4 {start == 1 ? add_room() : NULL;}
+# define O5 {end == 0 ? (NO_END) : NULL;}
+# define O6 {start == 0 ? (NO_START) : NULL;}
 # define MULTI_CHECK {O1; O2;}
+# define NO_CHECK {O5; O6;}
 # define ADDSE {02; 03;}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}
 # define NO_END {ft_putendl("Error : End room required."); exit(1);}
+# define NO_PATHS {ft_putendl("Error : No path to end."); exit(1);}
+# define BAD_ANTS {ft_putendl("Error: Ants must be an integer > 0."); exit(1);}
+# define BAD_X {ft_putendl("Error : Invalid value for x-coordinate."); exit(1);}
+# define BAD_Y {ft_putendl("Error : Invalid value for y-coordinate."); exit(1);}
 
 # define Q_1 {queue_add(queue, tmp_link->room);
 # define Q_2 tmp_link->room->dist = queue->room->dist + 1;}
@@ -105,7 +113,11 @@ typedef struct		s_queue
 */
 
 void				val_map(void);
-void				val_room(void);
+void				val_se(void);
+void				val_ants(void);
+void				val_rooms(void);
+void				ch_room(char *line);
+int					check_lines(char *str, char sp);
 
 /*
 **struct control
@@ -135,5 +147,6 @@ void				display_ants(t_ant *ant, t_room **rooms);
 void				traversal(t_path *path, t_room **rooms);
 void				disp_map(char **map);
 t_room				*find_room(t_room *room, char *name);
+void				breadth(t_room *start);
 
 #endif

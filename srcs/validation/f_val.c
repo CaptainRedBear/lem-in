@@ -12,7 +12,7 @@
 
 #include "../../lem_in.h"
 
-static int		check_lines(char *str, char sp)
+int		check_lines(char *str, char sp)
 {
 	int	count;
 	int	i;
@@ -25,14 +25,6 @@ static int		check_lines(char *str, char sp)
 		i++;
 	}
 	return (count);
-}
-
-void			val_room(void)
-{
-	int i;
-
-	i = 0;
-	i++;
 }
 
 void			val_se(void)
@@ -60,36 +52,30 @@ void			val_se(void)
 		}
 	}
 	MULTI_CHECK;
-	end == 0 ? (NO_END) : NULL;
-	start == 0 ? (NO_START) : NULL;
+	NO_CHECK;
 	ADDSE;
+}
+
+void			val_ants(void)
+{
+	char	*lines;
+	int		ants;
+	int		i;
+
+	i = 0;
+	get_next_line(0, &lines);
+	while (lines[i])
+	{
+		ft_isdigit(lines[i]) ? NULL : (BAD_ANTS);
+		i++;
+	}
+	ants = atoi(lines);
+	ants > 0 ? NULL : (BAD_ANTS);
 }
 
 void			val_map(void)
 {
-	char	*line;
-	int		start;
-	int		end;
-
-	DECLARE;
-	while (get_next_line(0, &line))
-	{
-		if (ft_strcmp(line, "##start") == 0)
-		{
-			START;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##start") == 0 ? (start++) : 0;
-		}
-		else if (ft_strcmp(line, "##end") == 0)
-		{
-			END;
-			if (ft_strncmp(line, "##", 2) != 0)
-				check_lines(line, ' ') == 2 ? val_room() : (POOR_FORM);
-			ft_strcmp(line, "##end") == 0 ? (end++) : 0;
-		}
-	}
-	MULTI_CHECK;
-	end == 0 ? (NO_END) : NULL;
-	start == 0 ? (NO_START) : NULL;
+	val_rooms();
+	// val_ants();
+	// val_se();
 }

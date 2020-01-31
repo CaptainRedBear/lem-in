@@ -14,7 +14,7 @@
 
 int			check_paths(t_room *room)
 {
-	while (room->type != END)
+	while (room->type != 2)
 		room = room->next;
 	if (room->dist == 0)
 		return (1);
@@ -75,7 +75,7 @@ void		breadth(t_room *start)
 	t_room	*end;
 
 	end = start;
-	while (end->type != END)
+	while (end->type != 2)
 		end = end->next;
 	room = start;
 	queue = queue_new(room);
