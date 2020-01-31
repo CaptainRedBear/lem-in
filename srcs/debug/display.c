@@ -36,7 +36,7 @@ static void			insfn(t_ant *ant)
 	ant->curr_room = ant->path->room_name;
 }
 
-void				disp_ants(t_ant *ant, t_room **rooms)
+void				display_ants(t_ant *ant, t_room **rooms)
 {
 	t_room	*tmp;
 

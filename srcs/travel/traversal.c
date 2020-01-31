@@ -26,7 +26,7 @@ static void     march(t_ant **ants, t_room **rooms)
     {
         i = 0;
         while (i < num)
-            disp_ants(ants[i++], rooms);
+            display_ants(ants[i++], rooms);
         ft_putendl("");
     }
 }

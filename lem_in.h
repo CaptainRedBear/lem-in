@@ -117,7 +117,7 @@ size_t				path_length(t_path *path);
 
 // Made by Tim
 
-void				disp_ants(t_ant *ant, t_room **rooms);
+void				display_ants(t_ant *ant, t_room **rooms);
 void				traversal(t_path *path, t_room **rooms);
 void				disp_map(char **map);
 t_room				*find_room(t_room *room, char *name);

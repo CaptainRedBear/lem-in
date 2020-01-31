@@ -37,7 +37,6 @@ void			val_room(void)
 
 void			val_map(void)
 {
-	disp_ants(NULL, NULL);
 	char	*line;
 	int		start;
 	int		end;
@@ -45,6 +44,7 @@ void			val_map(void)
 	DECLARE;
 	while (get_next_line(0, &line))
 	{
+		printf("You're a newb!\n");
 		if (ft_strcmp(line, "##start") == 0)
 		{
 			START;
