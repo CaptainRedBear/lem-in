@@ -1,6 +1,6 @@
 NAME			= lem_in
 CC				= gcc
-FLAGS			= -Wall -Werror -Wextra
+FLAGS			= -Wall -Werror -Wextra -g
 LIBFT_DIRECTORY = ./libft
 SRC_DIR 		= ./srcs/
 ROOMS_DIR		= $(SRC_DIR)rooms/
@@ -24,6 +24,7 @@ EOC				:="\033[0;0m"
 
 SRCS		= main.c $(VAL_DIR)f_val.c $(ROOMS_DIR)room_manip.c $(ROOMS_DIR)link_manip.c $(TRAVEL_DIR)traversal.c 
 SRCS		+= $(PATH_DIR)path_manip.c $(PATH_DIR)queue_manip.c $(DEBUG_DIR)display.c $(PATH_DIR)breadth.c
+SRCS		+= $(VAL_DIR)room.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)
