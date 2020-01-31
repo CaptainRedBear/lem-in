@@ -115,7 +115,9 @@ t_path				*new_path(char *room_name);
 t_path				*add_path(t_path **path, char *room_name);
 size_t				path_length(t_path *path);
 
-// Made by Tim
+/*
+**Made by Tim
+*/
 
 void				display_ants(t_ant *ant, t_room **rooms);
 void				traversal(t_path *path, t_room **rooms);
