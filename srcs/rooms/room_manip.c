@@ -38,7 +38,7 @@ t_room	*add_room(t_room **room, char **data, int type)
 	if (!*room)
 	{
 		*room = new_room(data, type);
-		return (*room);
+		add_room(room,data,type);
 	}
 	while (tmp)
 	{

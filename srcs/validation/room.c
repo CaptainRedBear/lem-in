@@ -101,7 +101,7 @@ void			ch_room(char *line, t_room **room)
 	data[2] = ft_itoa(y);
 	if (room)
 		i = 0;
-	if (ft_strcmp(name,"start") == 0){
+	if (ft_strcmp(data[0],"start") == 0){
 		add_room(room, data, 1);
 	} else {
 		add_room(room, data, 2);
