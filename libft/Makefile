@@ -89,8 +89,8 @@ $(NAME):
 	gcc -c -Wall -Wextra -Werror $(FILES)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
-clean:
 	rm -f *.o
+clean:
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
