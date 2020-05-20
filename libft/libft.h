@@ -41,6 +41,7 @@ char				*ft_strupcase(char *s);
 char				*ft_strlowcase(char *s);
 char				*ft_strcapitalize(char *s);
 char				*ft_strdup(const char *s1);
+char				*ft_strndup(const char *s1, int len);
 char				*ft_itoa(int n);
 char				*ft_strnstr(char const *haystack, char const *needle,
 		size_t len);
