@@ -103,7 +103,11 @@ void			ch_room(char *line, t_room **room)
 	data[2] = ft_itoa(y);
 	if (room)
 		i = 0;
-	// add_room(room, data, 1);
+	if (name == "start"){
+		add_room(room, data, 1);
+	} else {
+		add_room(room, data, 2);
+	}
 	printf("name[%s] x[%d] y[%d]\n", name, x, y);
 }
 
