@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_word_count.c                                    :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 12:51:10 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 12:54:51 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/22 11:20:15 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/22 11:27:05 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_word_count(char const *s, char c)
+char	*ft_strrev(char *s)
 {
-	int	count;
-	int	i;
+	int		i;
+	int		str_len;
+	char	temp;
 
 	i = 0;
-	count = 0;
-	while (s[i])
+	str_len = ft_strlen(s);
+	while (i < str_len / 2)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i] != '\0')
-			count++;
-		while (s[i] != c && s[i] != '\0')
-			i++;
+		temp = s[i];
+		s[i] = s[str_len - i - 1];
+		s[str_len - i - 1] = temp;
+		i++;
 	}
-	return (count);
+	return (s);
 }

@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/27 09:35:26 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/11 16:58:25 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/21 14:15:03 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/05 13:43:09 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *s)
+int	ft_atoi(char const *s)
 {
 	int neg;
-	int nbr;
+	int num;
 	int i;
 
 	i = 0;
 	neg = 1;
-	nbr = 0;
-	while (ft_iswhitespace(s[i]))
+	num = 0;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t' ||
+			s[i] == '\r' || s[i] == '\v' || s[i] == '\f')
 		i++;
 	if (s[i] == '-' || s[i] == '+')
 	{
@@ -29,10 +30,10 @@ int			ft_atoi(const char *s)
 			neg *= -1;
 		i++;
 	}
-	while (ft_isdigit(s[i]))
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		nbr = nbr * 10 + (s[i] - 48);
+		num = num * 10 + (s[i] - 48);
 		i++;
 	}
-	return (nbr * neg);
+	return (num * neg);
 }

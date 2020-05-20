@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 13:44:27 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 14:03:01 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/22 11:27:47 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/22 11:28:22 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_power_of(int a, int b)
-{
-	int i;
-	int val;
+#include "libft.h"
 
-	i = 1;
-	if (b == 0)
-		return (1);
-	val = a;
-	while (i < b)
-	{
-		val = a * val;
-		i++;
-	}
-	return (val);
+void	ft_swap(int *a, int *b)
+{
+	int temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

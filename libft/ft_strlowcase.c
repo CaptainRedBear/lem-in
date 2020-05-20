@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/22 11:50:11 by cglanvil          #+#    #+#             */
-/*   Updated: 2019/05/28 10:56:45 by cglanvil         ###   ########.fr       */
+/*   Created: 2019/05/23 11:40:48 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/23 11:45:27 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, char const *src)
+char	*ft_strlowcase(char *s)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (s[i] != '\0')
 	{
-		dst[i] = src[i];
+		if (s[i] >= 'A' && s[i] <= 'Z')
+		{
+			s[i] = s[i] + 32;
+		}
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (s);
 }

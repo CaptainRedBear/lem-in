@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/03 09:49:56 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/07/03 10:17:11 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/27 10:27:30 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/27 10:30:50 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *s1, size_t len)
+int		*ft_range(int min, int max)
 {
-	size_t		i;
-	char		*str;
+	int		i;
+	int		diff;
+	int		*ran;
 
-	i = 0;
-	if (!(str = ft_strnew(len)))
-		return (NULL);
-	while (s1[i] && i < len)
+	diff = max - min;
+	if (diff <= 0)
 	{
-		str[i] = s1[i];
+		return (NULL);
+	}
+	ran = (int*)malloc(sizeof(*ran) * (diff));
+	i = 0;
+	while (i < diff)
+	{
+		ran[i] = min + i;
 		i++;
 	}
-	return (str);
+	ran[i] = '\0';
+	return (ran);
 }

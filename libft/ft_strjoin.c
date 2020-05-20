@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 09:04:09 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 09:04:23 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/06 13:09:54 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/06 13:55:57 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*join;
 	size_t	i;
-	size_t	j;
-	size_t	strlens1;
-	size_t	strlens2;
+	size_t	l1;
+	size_t	l2;
+	char	*str;
 
-	if (s1 && s2)
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	if (!(str = (char*)malloc(sizeof(char) * (l1 + l2 + 1))))
+		return (NULL);
+	while (i < l1)
 	{
-		strlens1 = ft_strlen(s1);
-		strlens2 = ft_strlen(s2);
-		if (!(join = (char *)malloc(strlens1 + strlens2 + 1)))
-			return (NULL);
-		j = 0;
-		i = -1;
-		while (++i < strlens1)
-			join[i] = s1[i];
-		while (j < strlens2)
-			join[i++] = s2[j++];
-		join[i] = '\0';
-		return (join);
+		str[i] = s1[i];
+		i++;
 	}
-	return (NULL);
+	i = 0;
+	while (i < l2)
+	{
+		str[i + l1] = s2[i];
+		i++;
+	}
+	str[i + l1] = '\0';
+	return (str);
 }

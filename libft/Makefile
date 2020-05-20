@@ -1,46 +1,67 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/02/28 12:47:14 by cglanvil          #+#    #+#              #
+#    Updated: 2019/07/25 12:50:41 by cglanvil         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
-CFLAGS	= -Wall -Werror -Wextra -I. -c
-
-SRC =	ft_putchar.c \
-	   	ft_putnbr.c \
-		ft_putstr.c \
+FILES =	ft_atoi.c \
+		ft_putchar.c \
+		ft_putnbr.c \
+		ft_putstr.c	\
+		ft_range.c \
+		ft_strcmp.c \
 		ft_strlen.c \
-		ft_strdup.c \
-		ft_isdigit.c \
-		ft_atoi.c \
-		ft_bzero.c \
-		ft_memccpy.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_memchr.c \
+		ft_strrev.c \
+		ft_swap.c \
 		ft_strcpy.c \
 		ft_strncpy.c \
-		ft_strcat.c \
-		ft_strncat.c \
-		ft_strlcat.c \
-		ft_strchr.c \
-		ft_strrchr.c \
 		ft_strstr.c \
-		ft_strnstr.c \
-		ft_strcmp.c \
 		ft_strncmp.c \
+		ft_strupcase.c \
+		ft_strlowcase.c \
+		ft_strcapitalize.c \
+		ft_strdup.c \
+		ft_itoa.c \
+		ft_strnstr.c \
 		ft_isupper.c \
 		ft_islower.c \
 		ft_isalpha.c \
+		ft_isdigit.c \
 		ft_isalnum.c \
 		ft_isascii.c \
 		ft_isprint.c \
 		ft_toupper.c \
 		ft_tolower.c \
 		ft_memalloc.c \
-		ft_iswhitespace.c \
 		ft_memdel.c \
 		ft_strnew.c \
 		ft_strdel.c \
 		ft_strclr.c \
+		ft_strcat.c \
+		ft_strncat.c \
+		ft_strlcat.c \
+		ft_bzero.c \
+		ft_strchr.c \
+		ft_strrchr.c \
+		ft_memcpy.c \
+		ft_memccpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_putendl.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
 		ft_striter.c \
 		ft_striteri.c \
 		ft_strmap.c \
@@ -50,60 +71,26 @@ SRC =	ft_putchar.c \
 		ft_strsub.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
-		ft_word_len.c \
-		ft_word_count.c \
+		ft_iswhitespace.c \
+		ft_nbrlen.c \
 		ft_strsplit.c \
-		ft_nbr_len.c \
-		ft_power_of.c \
-		ft_itoa.c \
-		ft_putendl.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
+		ft_wordcount.c \
+		ft_wordlen.c \
 		ft_lstnew.c \
-		ft_lstdelone.c \
-		ft_lstdel.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
+		ft_lstdelone.c \
+		ft_lstdel.c \
 		ft_lstmap.c \
-		ft_strndup.c \
-		poschr.c \
-		get_next_line.c \
-		ft_stralen.c \
-		exit_m.c
-
-# ----- Colors -----
-BLACK			:="\033[1;30m"
-RED				:="\033[1;31m"
-GREEN			:="\033[1;32m"
-CYAN			:="\033[1;35m"
-PURPLE			:="\033[1;36m"
-WHITE			:="\033[1;37m"
-EOC				:="\033[0;0m"
-# ==================
-
-OBJ	= $(SRC:.c=.o)
-
-all : $(NAME)
-
-$(NAME) :
-	@gcc $(CFLAGS) $(SRC)
-	@echo $(GREEN)Compiled source files.$(EOC)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo $(GREEN)Built library.$(EOC)
-
-clean: 
-	@rm -f $(OBJ)
-	@echo $(RED)"Removed all .o files from libft" $(EOC)
-
+		ft_strcattoc.c \
+		get_next_line.c
+all: $(NAME)
+$(NAME):
+	gcc -c -Wall -Wextra -Werror $(FILES)
+	ar rc $(NAME) *.o
+	ranlib $(NAME)
+clean:
+	rm -f *.o
 fclean: clean
-	@rm -f $(NAME)
-	@echo $(RED)"Removed all .o files and .a files from libft" $(EOC)
-
+	rm -f $(NAME)
 re: fclean all
-
-norm:
-	norminette $(SRC)
-

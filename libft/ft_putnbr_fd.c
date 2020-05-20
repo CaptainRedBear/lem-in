@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/07 16:13:11 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/07 16:13:17 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/05 15:47:03 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/05 15:49:47 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nbr, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	long int	long_nbr;
-
-	long_nbr = (long int)nbr;
-	if (long_nbr < 0)
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		long_nbr = -long_nbr;
+		ft_putnbr_fd(-n, fd);
 	}
-	if (long_nbr >= 10)
+	else if (n >= 10)
 	{
-		ft_putnbr_fd(long_nbr / 10, fd);
-		ft_putnbr_fd(long_nbr % 10, fd);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
 	else
-		ft_putchar_fd(long_nbr + '0', fd);
+	{
+		ft_putchar_fd(n + '0', fd);
+	}
 }

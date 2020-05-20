@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strsub.c                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/05 13:11:52 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/05 13:16:06 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/06 12:15:17 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/06 12:24:32 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*sub;
-	size_t	size;
-	int		i;
+	size_t	i;
+	char	*substr;
 
 	i = 0;
-	size = len + 1;
-	if (!(sub = (char *)malloc(size)))
+	if (!s)
 		return (NULL);
-	if (s == NULL)
+	if (!(substr = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while ((int)len > i)
+	while (i < (len))
 	{
-		sub[i] = s[start + i];
+		substr[i] = s[start + i];
 		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	substr[i] = '\0';
+	return (substr);
 }
