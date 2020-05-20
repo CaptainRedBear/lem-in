@@ -23,7 +23,7 @@ void	free_paths(t_path **path)
 		next = (*path)->next_room;
 		free((*path)->room_name);
 		free(*path);
-		*path = (*path)->next_room;
+		*path = next;
 	}
 	*path = NULL;
 }

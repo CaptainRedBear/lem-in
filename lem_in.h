@@ -38,7 +38,7 @@
 # define O4 {start == 1 ? add_room() : NULL;}
 # define O5 {endcount == 0 ? (NO_END) : NULL;}
 # define O6 {startcount == 0 ? (NO_START) : NULL;}
-# define O7 {i = 0; j = 0; k = 0; l = 0; coord = NULL; x = 0; y = 0; count = 0;}
+# define O7 {i = 0; j = 0; k = 0; x = 0; y = 0; count = 0;}
 # define O8 {k = i; j = i; i = 0; name = ft_memalloc(j); O10;}
 # define O9 {name[j+1] = '\0'; i = j+1; count++;}
 # define O10 {name = ft_strndup(line, j);}
@@ -46,7 +46,7 @@
 # define O12 {k = checky(i, &y, k, line); count++;}
 # define CH_ROOM_NAME {O8;O9;}
 # define CH_ROOM_X {j = i; i = k + 1; k = checkx(i, &x, k, line); O11;}
-# define CH_ROOM_Y {l = 0; j = ft_strlen(line); i = k + 1; O12;}
+# define CH_ROOM_Y {j = ft_strlen(line); i = k + 1; O12;}
 # define MULTI_CHECK {O1; O2;}
 # define NO_CHECK {O5; O6;}
 # define NO_START {ft_putendl("Error : Start room required."); exit(1);}

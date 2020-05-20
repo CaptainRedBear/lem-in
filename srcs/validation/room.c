@@ -75,9 +75,7 @@ void			ch_room(char *line, t_room **room)
 	int		i;
 	int		j;
 	int		k;
-	int		l;
 	int		count;
-	char	*coord;
 	int		x;
 	int		y;
 	char 	*data[4];
@@ -115,9 +113,9 @@ void			val_rooms(t_room **room)
 {
 	char	*lines;
 	int		count;
-	int		se;
+	//int		se;
 
-	se = 0;
+	//se = 0;
 	count = 0;
 	while (get_next_line(0, &lines))
 	{
@@ -125,7 +123,7 @@ void			val_rooms(t_room **room)
 		{
 			if (ft_strncmp(lines, "##", 2) == 0)
 			{
-				se = count;
+				//se = count;
 				val_se(lines);
 			}
 			if (check_lines(lines, ' ') != 2 && check_lines(lines, '-') != 1 &&
