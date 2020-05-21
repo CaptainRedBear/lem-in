@@ -90,8 +90,8 @@ typedef struct		s_co_ord
 typedef struct		s_room
 {
 	char			*name;
-	t_co_ord		pos;
-	t_links			*links;
+	struct s_co_ord	pos;
+	struct s_links	*links;
 	int				type;
 	int				ant_count;
 	int				x_path;

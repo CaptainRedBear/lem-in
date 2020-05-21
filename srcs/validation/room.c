@@ -94,19 +94,19 @@ void			ch_room(char *line, t_room **room)
 		i++;
 	}
 	data[0] = ft_memalloc(strlen(name)+1);
-	data[1] = ft_memalloc(100);
-	data[2] = ft_memalloc(100);
+	data[1] = ft_memalloc(strlen(ft_itoa(x)));
+	data[2] = ft_memalloc(strlen(ft_itoa(y)));
 	data[0] = name;
 	data[1] = ft_itoa(x);
 	data[2] = ft_itoa(y);
 	if (room)
 		i = 0;
+	printf("name[%s] x[%s] y[%s]\n", data[0], data[1], data[2]);
 	if (ft_strcmp(data[0],"start") == 0){
 		add_room(room, data, 1);
 	} else {
 		add_room(room, data, 2);
 	}
-	printf("name[%s] x[%d] y[%d]\n", name, x, y);
 }
 
 void			val_rooms(t_room **room)

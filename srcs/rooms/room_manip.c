@@ -38,16 +38,20 @@ t_room	*add_room(t_room **room, char **data, int type)
 	if (!*room)
 	{
 		*room = new_room(data, type);
-		add_room(room,data,type);
+		return(*room);
 	}
 	while (tmp)
 	{
 		ft_strequ(data[0], tmp->name) ? (DUP_NAME) : NULL;
 		if (tmp->pos.x == ft_atoi(data[1]))
 			tmp->pos.y == ft_atoi(data[2]) ? (POS_CLASH) : NULL;
-		tmp = tmp->next;
+		if (tmp->next){
+			tmp = tmp->next;
+		} else {
+			tmp->next = new_room(data, type);
+			break;
+		}
 	}
-	tmp->next = new_room(data, type);
 	(*room)->rcount++;
 	return (*room);
 }
