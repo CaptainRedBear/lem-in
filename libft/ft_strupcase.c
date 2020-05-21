@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 13:14:49 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 13:14:52 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/23 11:28:19 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/23 11:31:28 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nbr_len(int n)
+char	*ft_strupcase(char *s)
 {
-	size_t	i;
+	int i;
 
-	i = 1;
-	while (n /= 10)
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] >= 'a' && s[i] <= 'z')
+		{
+			s[i] = s[i] - 32;
+		}
 		i++;
-	return (i);
+	}
+	return (s);
 }

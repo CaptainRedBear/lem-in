@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/31 09:31:51 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/05/31 09:34:02 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/21 14:32:26 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/11 16:47:00 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(char const *s1, char const *s2)
 {
-	int				i;
-	unsigned char	*c1;
-	unsigned char	*c2;
+	int i;
 
 	i = 0;
-	c1 = (unsigned char *)s1;
-	c2 = (unsigned char *)s2;
-	while (c1[i] != '\0' && c2[i] != '\0')
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 	{
-		if (c1[i] > c2[i])
-			return (1);
-		else if (c1[i] < c2[i])
-			return (-1);
 		i++;
 	}
-	return (c1[i] - c2[i]);
+	if ((unsigned char)s1[i] > (unsigned char)s2[i])
+		return (1);
+	else if ((unsigned char)s1[i] < (unsigned char)s2[i])
+		return (-1);
+	return (0);
 }

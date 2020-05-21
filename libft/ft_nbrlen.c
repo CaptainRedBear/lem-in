@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delimword.c                                     :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 11:41:52 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 11:42:50 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/06 15:51:34 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/06 16:24:23 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_word_len(char const *str, char c)
-{
-	int	i;
-	int	len;
+#include "libft.h"
 
-	i = 0;
+int	ft_nbrlen(int n)
+{
+	int		len;
+	long	nbr;
+
+	if (n == 0)
+		return (1);
 	len = 0;
-	while (str[i] == c)
-		i++;
-	while (str[i] != c && str[i] != '\0')
+	nbr = n;
+	if (n < 0)
 	{
-		i++;
+		len++;
+		nbr *= -1;
+	}
+	while (nbr)
+	{
+		nbr /= 10;
 		len++;
 	}
 	return (len);

@@ -75,9 +75,7 @@ void			ch_room(char *line, t_room **room)
 	int		i;
 	int		j;
 	int		k;
-	int		l;
 	int		count;
-	char	*coord;
 	int		x;
 	int		y;
 	char 	*data[4];
@@ -96,24 +94,28 @@ void			ch_room(char *line, t_room **room)
 		i++;
 	}
 	data[0] = ft_memalloc(strlen(name)+1);
-	data[1] = ft_memalloc(100);
-	data[2] = ft_memalloc(100);
+	data[1] = ft_memalloc(strlen(ft_itoa(x)));
+	data[2] = ft_memalloc(strlen(ft_itoa(y)));
 	data[0] = name;
 	data[1] = ft_itoa(x);
 	data[2] = ft_itoa(y);
 	if (room)
 		i = 0;
-	// add_room(room, data, 1);
-	printf("name[%s] x[%d] y[%d]\n", name, x, y);
+	printf("name[%s] x[%s] y[%s]\n", data[0], data[1], data[2]);
+	if (ft_strcmp(data[0],"start") == 0){
+		add_room(room, data, 1);
+	} else {
+		add_room(room, data, 2);
+	}
 }
 
 void			val_rooms(t_room **room)
 {
 	char	*lines;
 	int		count;
-	int		se;
+	//int		se;
 
-	se = 0;
+	//se = 0;
 	count = 0;
 	while (get_next_line(0, &lines))
 	{
@@ -121,7 +123,7 @@ void			val_rooms(t_room **room)
 		{
 			if (ft_strncmp(lines, "##", 2) == 0)
 			{
-				se = count;
+				//se = count;
 				val_se(lines);
 			}
 			if (check_lines(lines, ' ') != 2 && check_lines(lines, '-') != 1 &&

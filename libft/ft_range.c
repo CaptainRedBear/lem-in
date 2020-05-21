@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_word_count.c                                    :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 12:51:10 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 12:54:51 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/27 10:27:30 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/27 10:30:50 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_word_count(char const *s, char c)
+int		*ft_range(int min, int max)
 {
-	int	count;
-	int	i;
+	int		i;
+	int		diff;
+	int		*ran;
 
-	i = 0;
-	count = 0;
-	while (s[i])
+	diff = max - min;
+	if (diff <= 0)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i] != '\0')
-			count++;
-		while (s[i] != c && s[i] != '\0')
-			i++;
+		return (NULL);
 	}
-	return (count);
+	ran = (int*)malloc(sizeof(*ran) * (diff));
+	i = 0;
+	while (i < diff)
+	{
+		ran[i] = min + i;
+		i++;
+	}
+	ran[i] = '\0';
+	return (ran);
 }

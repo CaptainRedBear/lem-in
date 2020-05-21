@@ -3,46 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 11:24:45 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/06 11:24:46 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/06 13:58:22 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/11 17:06:52 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	whitespacestart(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	int c;
+	size_t	i;
+	size_t	start;
+	size_t	end;
+	char	*str;
 
-	c = 0;
-	while (ft_iswhitespace(s[c]))
-		c++;
-	return (c);
-}
-
-char		*ft_strtrim(char const *s)
-{
-	char	*ns;
-	int		i;
-	int		l;
-	int		x;
-
+	if (!s)
+		return (NULL);
 	i = 0;
-	x = 0;
-	if (s == NULL)
-		return (NULL);
-	l = (int)ft_strlen(s) - 1;
-	i = whitespacestart(s);
-	if (s[i] == '\0')
+	while (ft_iswhitespace(s[i]))
+		i++;
+	start = i;
+	while (s[i])
+		i++;
+	i--;
+	while (ft_iswhitespace(s[i]))
+		i--;
+	end = i;
+	if ((int)end < (int)start)
 		return (ft_strdup(""));
-	while (ft_iswhitespace(s[l]))
-		l--;
-	if (!(ns = (char *)malloc(sizeof(char) * (l - i) + 2)))
+	if (!(str = ft_strnew(end - start + 1)))
 		return (NULL);
-	while (i <= l)
-		ns[x++] = s[i++];
-	ns[x] = '\0';
-	return (ns);
+	i = -1;
+	while (++i + start <= end)
+		str[i] = s[start + i];
+	return (str);
 }

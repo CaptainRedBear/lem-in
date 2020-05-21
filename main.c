@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	t_room	*rooms;
+	t_room	*rooms = NULL;
 	val_map(&rooms);
 }

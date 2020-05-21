@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stralen.c                                       :+:      :+:    :+:   */
+/*   ft_wordlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/29 08:32:09 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/08/29 08:36:02 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/11 15:24:29 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/11 15:45:03 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_stralen(char **str)
+int	ft_wordlen(char const *s, char c)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
-	while (str[i])
-	{
+	while (s[i] != c && s[i])
 		i++;
-	}
 	return (i);
 }

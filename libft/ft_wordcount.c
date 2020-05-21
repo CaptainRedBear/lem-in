@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_m.c                                           :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 13:25:42 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/09/12 13:27:07 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/06/07 16:36:30 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/06/12 15:32:21 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	exit_m(char *str)
+int	ft_wordcount(char const *s, char c)
 {
-	ft_putstr(str);
-	exit(0);
+	int	words;
+	int	i;
+
+	i = 1;
+	words = 0;
+	if (s[0] != c && s[0])
+		words++;
+	while (s[0] && s[i])
+	{
+		if (s[i] != c && s[i - 1] == c)
+			words++;
+		i++;
+	}
+	return (words);
 }

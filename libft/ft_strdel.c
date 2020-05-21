@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbarnard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cglanvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/04 12:32:39 by hbarnard          #+#    #+#             */
-/*   Updated: 2019/06/04 12:32:41 by hbarnard         ###   ########.fr       */
+/*   Created: 2019/05/29 11:47:38 by cglanvil          #+#    #+#             */
+/*   Updated: 2019/05/29 11:50:42 by cglanvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_strdel(char **as)
 {
-	if ((!as) || (!*as))
-		return ;
-	free(*as);
-	*as = NULL;
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }
