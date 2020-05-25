@@ -128,6 +128,9 @@ void				val_map(t_room **room);
 void				val_se(char *line);
 void				val_ants(void);
 void				val_rooms(t_room **room);
+void        		new_valid_link(t_room **room, char *line);
+void				val_links();
+void    			print_links(t_room **room);
 void				ch_room(char *line, t_room **room);
 int					check_lines(char *str, char sp);
 
