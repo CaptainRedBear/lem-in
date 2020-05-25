@@ -61,7 +61,7 @@ void        new_valid_link(t_room **room, char *line)
         j++;
     }
     room2[j] = '\0';
-    printf("Add links name1[%s] name2[%s]\n", room1, room2);
+    //printf("Add links name1[%s] name2[%s]\n", room1, room2);
     add_link(room, room1, room2);
 }
 
@@ -75,7 +75,7 @@ void        print_links(t_room **room)
 		tmplink = tmp->links;
 		while(tmplink)
 		{
-			printf("Room links name1[%s] name2[%s]\n", tmp->name, tmplink->link);
+			printf("%s-%s\n", tmp->name, tmplink->link);
 			tmplink = tmplink->next;
 		}
 		tmp = tmp->next;

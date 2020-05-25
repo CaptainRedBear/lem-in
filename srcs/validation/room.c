@@ -101,7 +101,7 @@ void			ch_room(char *line, t_room **room)
 	data[2] = ft_itoa(y);
 	if (room)
 		i = 0;
-	printf("name[%s] x[%s] y[%s]\n", data[0], data[1], data[2]);
+	printf("%s %s %s\n", data[0], data[1], data[2]);
 	if (ft_strcmp(data[0],"start") == 0){
 		add_room(room, data, 1);
 	} else {
@@ -112,11 +112,13 @@ void			ch_room(char *line, t_room **room)
 void			val_rooms(t_room **room)
 {
 	char	*lines;
+	char	*comments;
 	int		count;
 	//int		se;
 
 	//se = 0;
 	count = 0;
+	comments = ft_memalloc(1000000);
 	while (get_next_line(0, &lines))
 	{
 		if (count >= 0)
@@ -137,10 +139,16 @@ void			val_rooms(t_room **room)
 			{
 				new_valid_link(room,lines);
 			}
+			if (check_lines(lines, '#') == 1)
+			{
+				comments = ft_strjoin(comments,lines);
+				comments = ft_strjoin(comments,"\n");
+			}
 		}
 		count++;
 	}
 	MULTI_CHECK;
 	NO_CHECK;
 	print_links(room);
+	printf("%s",comments);
 }
