@@ -24,7 +24,7 @@ EOC				:="\033[0;0m"
 
 SRCS		= main.c $(VAL_DIR)f_val.c $(ROOMS_DIR)room_manip.c $(ROOMS_DIR)link_manip.c $(TRAVEL_DIR)traversal.c 
 SRCS		+= $(PATH_DIR)path_manip.c $(PATH_DIR)queue_manip.c $(DEBUG_DIR)display.c $(PATH_DIR)breadth.c
-SRCS		+= $(VAL_DIR)room.c
+SRCS		+= $(VAL_DIR)room.c $(VAL_DIR)links.c
 OBJS		= $(SRCS:.c=.o)
 
 all:		$(NAME)

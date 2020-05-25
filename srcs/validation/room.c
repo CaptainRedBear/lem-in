@@ -133,9 +133,14 @@ void			val_rooms(t_room **room)
 			{
 				ch_room(lines, room);
 			}
+			if (check_lines(lines, '#') == 0 && check_lines(lines, '-') == 1)
+			{
+				new_valid_link(room,lines);
+			}
 		}
 		count++;
 	}
 	MULTI_CHECK;
 	NO_CHECK;
+	print_links(room);
 }

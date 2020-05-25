@@ -51,6 +51,7 @@ t_room	*add_room(t_room **room, char **data, int type)
 			tmp->next = new_room(data, type);
 			break;
 		}
+		printf("Room name[%s] x[%d] y[%d]\n", tmp->name, tmp->pos.x, tmp->pos.y);
 	}
 	(*room)->rcount++;
 	return (*room);
