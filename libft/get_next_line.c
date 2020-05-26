@@ -102,7 +102,9 @@ int		get_next_line(const int fd, char **line)
 	if (!line || fd < 0 || read(fd, NULL, 0) < 0 || BUFF_SIZE < 1)
 		return (-1);
 	buff = fetch_correct_fd(&head, fd);
-	*line = ft_strnew(250000);
+	if (*line != NULL)
+		free(*line);
+	*line = ft_strnew(1000);
 	while (buff[0] != '\0')
 		if (logic(&buff, &*line) == 1)
 			return (1);
