@@ -12,14 +12,22 @@
 
 #include "libft.h"
 
+char	*ft_exceptions(int n)
+{
+	if (n == 0)
+		return (ft_strdup("0"));
+	else
+		return (ft_strdup("-2147483648"));
+}
+
 char	*ft_itoa(int n)
 {
 	int		len;
 	long	nbr;
 	char	*str;
 
-	if (n == 0)
-		return (ft_strdup("0"));
+	if (n == 0 || n == -2147483648)
+		return ft_exceptions(n);
 	nbr = n;
 	len = ft_nbrlen(n);
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
@@ -28,7 +36,7 @@ char	*ft_itoa(int n)
 	len--;
 	if (n < 0)
 	{
-		nbr *= -1;
+		nbr = -nbr;
 		str[0] = '-';
 	}
 	while (nbr)

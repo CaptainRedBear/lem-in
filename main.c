@@ -6,7 +6,7 @@
 /*   By: heinrich <heinrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 07:42:42 by hbarnard          #+#    #+#             */
-/*   Updated: 2020/06/01 18:55:20 by heinrich         ###   ########.fr       */
+/*   Updated: 2020/06/01 22:21:58 by heinrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,4 @@ int			main(void)
 	path = construct_path(rooms);
 	disp_map(mappy);
 	traversal(path, &rooms);
-	free_rooms(&rooms);
-	free_paths(&path);
-	while(1);
 }
