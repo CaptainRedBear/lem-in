@@ -35,5 +35,4 @@ int			main(void)
 	traversal(path, &rooms);
 	free_rooms(&rooms);
 	free_paths(&path);
-	while(1);
 }
